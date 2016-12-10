@@ -18,9 +18,15 @@
   (-> (resp/response "¿Y vos quien sos?")
       (resp/content-type "text/plain")))
 
+(defn bayuncadas
+  [request]
+  (-> (resp/response (or (System/getenv "WARIABLE") "🤔"))
+      (resp/content-type "text/plain")))
+
 (defroutes app-routes
   (GET "/" [] index)
   (GET "/alo" [] alo)
+  (GET "/bayuncadas" [] bayuncadas)
   (GET "/healthcheck" [] "OK")
   (route/not-found "Not Found"))
 
