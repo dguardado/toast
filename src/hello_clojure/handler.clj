@@ -13,8 +13,14 @@
   (-> (resp/resource-response "index.html" {:root "public"})
       (resp/content-type "text/html")))
 
+(defn alo
+  [request]
+  (-> (resp/response "¿Y vos quien sos?")
+      (resp/content-type "text/plain")))
+
 (defroutes app-routes
   (GET "/" [] index)
+  (GET "/alo" [] alo)
   (GET "/healthcheck" [] "OK")
   (route/not-found "Not Found"))
 
